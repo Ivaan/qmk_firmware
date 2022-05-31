@@ -19,6 +19,7 @@
 #define IN_SPC3 LT(3, KC_SPC)
 #define IN_ENT1 LT(1, KC_ENT)
 #define IN_ENT3 LT(3, KC_ENT)
+#define IN_TFS LCA(KC_PAUS) //ctrl+alt+pause, for Synergy to send ctrl+alt+del to client (TFS = Three Finger Salute)
 
 // Left-hand home row mods
 #define GUI_A LGUI_T(KC_A)
@@ -97,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      _______, _______,DF(_A_BASE), _______, _______, _______,                            _______, _______, _______, _______, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, IN_GBY, _______, _______, _______, _______,                            _______, KC_7,    KC_8,    KC_9,    _______, _______,
+     _______, IN_GBY, _______, _______, _______, _______,                            _______, KC_7,    KC_8,    KC_9,    _______, IN_TFS,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      _______, _______, _______, _______, _______, _______,                            _______, KC_4,    KC_5,    KC_6,    _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
@@ -224,13 +225,13 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case SFT_D:
         case SFT_K:
+        case IN_SPC2:
+        case IN_SPC3:
             return TAPPING_TERM_LESS;
         case GUI_SCLN:
         case GUI_A:
         case IN_ENT1:
-        case IN_SPC2:
         case IN_ENT3:
-        case IN_SPC3:
         case ALT_S:
         case ALT_L:
             return TAPPING_TERM_MORE;
